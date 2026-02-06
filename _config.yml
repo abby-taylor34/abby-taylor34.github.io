@@ -1,8 +1,8 @@
 title: Abby Taylor's Works
 description: Hi! I am a current junior, slated to graduate May 2027, and this is my working portfolio. As a double major in both Computer Science and Criminal Justice, there is quite the variety. All across the GitHub pages site are my works for both majors and other classes. Enjoy!
-baseurl = "/"
-url = ""
+baseurl: "/"
+url: ""
 theme: jekyll-theme-tactile
 
-search_enabled = false
+search_enabled: false
 ## aux links can be made for repo and other stuff
