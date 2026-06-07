@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abby Taylor — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f1e2e;
+      --navy-mid: #1a2f44;
+      --cream: #f5f0e8;
+      --gold: #c8a96e;
+      --gold-light: #e2c99a;
+      --white: #ffffff;
+      --text-muted: #8a9ab0;
+      --border: rgba(200,169,110,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 4rem;
+      background: rgba(15,30,46,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200,169,110,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 2rem;
+      width: 3rem; height: 2px;
+      background: var(--gold);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      padding: 0.3rem 0.75rem;
+      background: rgba(200,169,110,0.1);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    #about { background: var(--navy-mid); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-details { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .detail-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .detail-value {
+      font-size: 0.95rem;
+      color: var(--cream);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(200,169,110,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    .project-card:hover::after { transform: scaleX(1); }
+
+    .project-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover { gap: 0.75rem; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--navy-mid); }
+
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      padding-top: 0.25rem;
+    }
+
+    .timeline-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-company {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .timeline-content p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-intro p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--cream);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    .contact-link-icon {
+      width: 2rem;
+      height: 2rem;
+      background: rgba(200,169,110,0.1);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.85rem 1rem;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    h1 { animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+    .btn-group { animation: fadeUp 0.6s 0.3s ease both; }
+    .hero-card { animation: fadeUp 0.6s 0.2s ease both; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      .hero-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Abby Taylor</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Available for opportunities</div>
+        <h1>Hi, I'm <span>Abby Taylor</span></h1>
+        <p class="hero-desc">A passionate professional focused on delivering thoughtful, high-quality work. I bring clarity, precision, and creativity to everything I do.</p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Dedication</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Strategy</span>
+          <span class="skill-tag">Design</span>
+          <span class="skill-tag">Development</span>
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Leadership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">Who I Am</div>
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm Abby Taylor — a driven professional with a passion for turning complex problems into clear, elegant solutions. I thrive at the intersection of critical thinking and creative execution.</p>
+          <p>Whether collaborating on a team or leading a project independently, I bring a methodical approach and a high standard for quality. I believe great work starts with understanding people — their needs, goals, and context.</p>
+          <p>When I'm not working, you'll find me exploring new ideas, staying current in my field, and building things that matter.</p>
+        </div>
+        <div class="about-details">
+          <div class="detail-item">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">United States</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Education</span>
+            <span class="detail-value">Your Degree · Your University</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Specialization</span>
+            <span class="detail-value">Your Field / Specialty</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Status</span>
+            <span class="detail-value">Open to new opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">What I've Built</div>
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-tag">Project Type</div>
+          <h3>Project One</h3>
+          <p>A brief description of this project, what problem it solved, and what you contributed. Keep it concise and results-focused.</p>
+          <a href="#" class="project-link">View Project →</a>
+        </div>
+        <div class="project-card">
+          <div class="project-tag">Project Type</div>
+          <h3>Project Two</h3>
+          <p>A brief description of this project, what problem it solved, and what you contributed. Keep it concise and results-focused.</p>
+          <a href="#" class="project-link">View Project →</a>
+        </div>
+        <div class="project-card">
+          <div class="project-tag">Project Type</div>
+          <h3>Project Three</h3>
+          <p>A brief description of this project, what problem it solved, and what you contributed. Keep it concise and results-focused.</p>
+          <a href="#" class="project-link">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-label">Where I've Been</div>
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2023 — Present</div>
+          <div class="timeline-content">
+            <h3>Your Current Role</h3>
+            <div class="timeline-company">Company Name</div>
+            <p>Describe your responsibilities, accomplishments, and impact in this role. Use numbers and outcomes where possible — e.g. "increased efficiency by 30%" or "led a team of 5."</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2021 — 2023</div>
+          <div class="timeline-content">
+            <h3>Previous Role</h3>
+            <div class="timeline-company">Company Name</div>
+            <p>Describe your responsibilities and key accomplishments here. Focus on what you built, improved, or led during this time.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2020 — 2021</div>
+          <div class="timeline-content">
+            <h3>Earlier Role or Internship</h3>
+            <div class="timeline-company">Company Name</div>
+            <p>Even early experience matters — highlight what you learned and how you contributed to the team or organization.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Let's Connect</div>
+      <h2>Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <p>I'm always open to discussing new opportunities, collaborations, or just having a conversation. Feel free to reach out through any of the channels below.</p>
+          <div class="contact-links">
+            <a href="mailto:your@email.com" class="contact-link">
+              <span class="contact-link-icon">✉</span>
+              your@email.com
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank">
+              <span class="contact-link-icon">in</span>
+              linkedin.com/in/yourprofile
+            </a>
+            <a href="https://github.com/abby-taylor34" class="contact-link" target="_blank">
+              <span class="contact-link-icon">gh</span>
+              github.com/abby-taylor34
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Jane Smith" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project or opportunity..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Abby Taylor</span>
+    <p>© 2026 Abby Taylor. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('Thanks for your message! This form needs a backend or service like Formspree to actually send — update the form action when ready.');
+    }
+  </script>
+
+</body>
+</html>
