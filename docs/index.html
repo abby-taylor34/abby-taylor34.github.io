@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abby Taylor — Portfolio</title>
+  <title>Abby Taylor — Digital Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #0f1e2e;
+      --navy: #04080d;
       --navy-mid: #1a2f44;
       --cream: #f5f0e8;
-      --gold: #c8a96e;
-      --gold-light: #e2c99a;
+      --gold: #caeb9c; /* actually green (name color)*/
+      --gold-light: #82ab8d;
       --white: #ffffff;
-      --text-muted: #8a9ab0;
+      --text-muted: #fffff;
       --border: rgba(200,169,110,0.2);
+      --green: #517344;
+      --green-mid: #2D4026;
+      --nav-green: rgba(45, 64, 38, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,7 +26,7 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--navy);
+      background: var(--green);
       color: var(--cream);
       overflow-x: hidden;
     }
@@ -37,7 +40,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem 4rem;
-      background: rgba(15,30,46,0.92);
+      background: var(--nav-green);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -157,7 +160,7 @@
 
     .btn-primary {
       background: var(--gold);
-      color: var(--navy);
+      color: var(--green);
     }
 
     .btn-primary:hover {
@@ -178,8 +181,9 @@
       transform: translateY(-2px);
     }
 
+    /* Middle Card */
     .hero-card {
-      background: var(--navy-mid);
+      background: var(--nav-green);
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 2.5rem;
@@ -274,7 +278,7 @@
     }
 
     /* ABOUT */
-    #about { background: var(--navy-mid); }
+    #about { background: var(--green-mid); }
 
     .about-grid {
       display: grid;
@@ -324,7 +328,7 @@
     }
 
     .project-card {
-      background: var(--navy-mid);
+      background: var(--green-mid);
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 2rem;
@@ -389,7 +393,7 @@
     .project-link:hover { gap: 0.75rem; }
 
     /* EXPERIENCE */
-    #experience { background: var(--navy-mid); }
+    #experience { background: var(--green-mid); }
 
     .timeline { display: flex; flex-direction: column; gap: 0; }
 
@@ -492,7 +496,7 @@
 
     .form-group input,
     .form-group textarea {
-      background: var(--navy-mid);
+      background: var(--green-mid);
       border: 1px solid var(--border);
       border-radius: 2px;
       padding: 0.85rem 1rem;
@@ -575,7 +579,7 @@
       <div class="hero-content">
         <div class="hero-eyebrow">Available for opportunities</div>
         <h1>Hi, I'm <span>Abby Taylor</span></h1>
-        <p class="hero-desc">A passionate professional focused on delivering thoughtful, high-quality work. I bring clarity, precision, and creativity to everything I do.</p>
+        <p class="hero-desc">A passionate professional focused on delivering unique and high-quality work. I bring new ideas and hard-work ethic into any project.</p>
         <div class="btn-group">
           <a href="#projects" class="btn btn-primary">View My Work</a>
           <a href="#contact" class="btn btn-outline">Get In Touch</a>
@@ -588,21 +592,17 @@
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">12</div>
+            <div class="stat-number">__</div>
             <div class="stat-label">Projects Completed</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">8</div>
-            <div class="stat-label">Happy Clients</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Dedication</div>
+            <div class="stat-number">2</div>
+            <div class="stat-label">Degrees</div>
           </div>
         </div>
         <div class="skill-tags">
-          <span class="skill-tag">Strategy</span>
-          <span class="skill-tag">Design</span>
+          <span class="skill-tag">Work Ethic</span>
+          <span class="skill-tag">Creativity</span>
           <span class="skill-tag">Development</span>
           <span class="skill-tag">Communication</span>
           <span class="skill-tag">Leadership</span>
